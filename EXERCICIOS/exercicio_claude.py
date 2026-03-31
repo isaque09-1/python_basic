@@ -13,7 +13,7 @@
 #
 # CONCEITOS USADOS: input(), int(), if/else, operador % (módulo)
 # -----------------------------------------------------------------------------
-
+'''
 numero = int(input("Digite um número inteiro: "))
 
 if numero % 2 == 0:
@@ -127,13 +127,13 @@ print("Soma dos pares:", sum(par))
 
 
 #====================================================================================
-'''Você concluiu todos os 5 exercícios! Aqui vai um resumo da sua jornada:
+ Você concluiu todos os 5 exercícios! Aqui vai um resumo da sua jornada:
 
 Exercício 1 — resolveu de primeira, ótimo início
 Exercício 2 — dificuldade com elif e faixas com and, mas chegou lá
 Exercício 3 — pegou bem o conceito de for com append()
 Exercício 4 — o mais difícil, mas aprendeu o in com tuplas
-Exercício 5 — boa evolução com listas e sum()'''
+Exercício 5 — boa evolução com listas e sum()
 #====================================================================================
 
 
@@ -253,7 +253,7 @@ else:
 
 
 #=====================================================================================
-'''
+
 1 — Parênteses abertos sem fechar
 Apareceu nos exercícios 2, 7 e 8. Sempre conte os ( e ) — o número tem que ser igual na mesma linha.
 2 — Indentação
@@ -266,7 +266,7 @@ No exercício 6 você usou for i mas dentro do if usou letra. O nome precisa ser
 Nos exercícios 3 e 8 você colocou o input() antes do for, o que pede o valor só uma vez. Quando quiser pedir um valor a cada repetição, o input() precisa estar dentro do loop.
 6 — Comparar tupla com string
 No exercício 4 você tentou diaS == "segunda" várias vezes. Para verificar se um valor está dentro de uma tupla ou lista, usa-se in, não ==.
-'''
+
 #========================================================================================
 
 
@@ -398,14 +398,172 @@ else :
 
 
 #=============================================
-'''Você concluiu os exercícios 11 a 15! Resumo rápido:
+Você concluiu os exercícios 11 a 15! Resumo rápido:
 
 Exercício 11 — while com contador, o mais difícil do bloco
 Exercício 12 — acumulador com +=, resolveu rápido
 Exercício 13 — conversor com fórmulas, pegou bem a lógica
 Exercício 14 — not in com listas, excelente
 Exercício 15 — contagem regressiva com while e -=
-'''
+
 #==============================================
 
 
+#=================================================
+#POO
+#=================================================
+# =============================================================================
+#  EXERCÍCIOS DE POO — Programação Orientada a Objetos
+#  Resolva cada exercício no espaço indicado
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# EXERCÍCIO 1 — Criar uma classe Pessoa
+# -----------------------------------------------------------------------------
+# ENUNCIADO:
+#   Crie uma classe chamada Pessoa com os atributos nome e idade.
+#   Crie dois objetos dessa classe e exiba o nome e a idade de cada um.
+#
+# CONCEITOS: class, __init__, self, atributos, objetos
+#
+# EXEMPLO DE USO:
+#   p1 = Pessoa("João", 25)
+#   print(p1.nome)   # João
+#   print(p1.idade)  # 25
+# -----------------------------------------------------------------------------
+
+# Seu código aqui:
+class Pessoa:
+ def __init__ (self, nome, idade):
+   self.nome = nome 
+   self.idade = idade
+
+p1 = Pessoa('carlos',18)
+print(p1.nome)
+print(p1.idade)
+
+p2 = Pessoa("pedro",10)
+print(f'Ola {p2.nome} sua idade e {p2.idade}')
+
+
+
+# -----------------------------------------------------------------------------
+# EXERCÍCIO 2 — Adicionar um método
+# -----------------------------------------------------------------------------
+# ENUNCIADO:
+#   Crie uma classe Carro com os atributos marca, modelo e ano.
+#   Adicione um método chamado descricao() que exiba uma frase com as
+#   informações do carro. Crie um objeto e chame o método.
+#
+# CONCEITOS: class, __init__, self, método, atributos
+#
+# EXEMPLO DE USO:
+#   carro1 = Carro("Toyota", "Corolla", 2020)
+#   carro1.descricao()  # Toyota Corolla 2020
+# -----------------------------------------------------------------------------
+'''
+# Seu código aqui:
+class Carro :
+   def __init__(self, marca , modelo, ano):
+      self.marca = marca
+      self.modelo = modelo
+      self.ano = ano
+
+   def descricao(self):
+      print(f'a marca do seu carro e : {self.marca}')
+      print(f'o modelo do seu carro e : {self.modelo}')
+      print(f'o ano do seu carro e : {self.ano}')
+      
+car1 = Carro("Ford","fusca",1920)
+car1.descricao()
+
+      
+    
+
+
+
+# -----------------------------------------------------------------------------
+# EXERCÍCIO 3 — Método que modifica atributo
+# -----------------------------------------------------------------------------
+# ENUNCIADO:
+#   Crie uma classe ContaBancaria com o atributo saldo.
+#   Adicione dois métodos:
+#     - depositar(valor): soma ao saldo
+#     - sacar(valor): subtrai do saldo, mas só se houver saldo suficiente
+#   Teste os dois métodos e exiba o saldo após cada operação.
+#
+# CONCEITOS: class, __init__, self, métodos, if/else, atributos
+#
+# EXEMPLO DE USO:
+#   conta = ContaBancaria(1000)
+#   conta.depositar(500)   # saldo: 1500
+#   conta.sacar(200)       # saldo: 1300
+#   conta.sacar(9999)      # saldo insuficiente!
+# -----------------------------------------------------------------------------
+
+# Seu código aqui:
+class ContaBancaria :
+   def __init__(self, saldo):
+      self.saldo = saldo
+
+   def depositar(self,valor):
+    self.saldo += valor
+    print(f'saldo: {self.saldo}')
+
+   def sacar(self,valor):
+    if valor <= self.saldo:
+      self.saldo -= valor
+      print(f"saldo suficiente, voce tem :{self.saldo}")
+    else:
+      print('saldo insuficiente')
+
+conta = ContaBancaria(1000)
+conta.depositar(500)
+conta.sacar(500)
+       
+         
+
+
+
+# -----------------------------------------------------------------------------
+# EXERCÍCIO 4 — Lista de objetos
+# -----------------------------------------------------------------------------
+# ENUNCIADO:
+#   Crie uma classe Produto com os atributos nome e preco.
+#   Crie uma lista com 3 produtos.
+#   Percorra a lista com um for e exiba o nome e preço de cada um.
+#   No final, exiba o produto mais caro.
+#
+# CONCEITOS: class, __init__, self, lista, for, objetos
+#
+# EXEMPLO DE USO:
+#   p1 = Produto("Notebook", 3500)
+#   p2 = Produto("Mouse", 150)
+#   produtos = [p1, p2]
+#   for produto in produtos:
+#       print(produto.nome, produto.preco)
+# -----------------------------------------------------------------------------
+
+# Seu código aqui:
+
+
+
+
+# -----------------------------------------------------------------------------
+# EXERCÍCIO 5 — Método __str__
+# -----------------------------------------------------------------------------
+# ENUNCIADO:
+#   Crie uma classe Aluno com os atributos nome e nota.
+#   Adicione o método especial __str__ que retorna uma frase descrevendo
+#   o aluno. Quando você der print(aluno) diretamente, a frase deve
+#   aparecer automaticamente.
+#
+# CONCEITOS: class, __init__, self, __str__, return
+#
+# EXEMPLO DE USO:
+#   a1 = Aluno("Maria", 9.5)
+#   print(a1)  # Aluno Maria tem nota 9.5
+# -----------------------------------------------------------------------------
+
+# Seu código aqui:
