@@ -546,7 +546,18 @@ conta.sacar(500)
 # -----------------------------------------------------------------------------
 
 # Seu código aqui:
+class Produto:
+  def __init__(self, nome , preco):
+    self.nome = nome 
+    self.preco = preco 
 
+p1= Produto("mouse ped",100)
+p2= Produto("notbook",4000)    
+
+produtos = [p1,p2]
+
+for produto in produtos:
+  print(produto.nome , produto.preco)
 
 
 
@@ -567,3 +578,12 @@ conta.sacar(500)
 # -----------------------------------------------------------------------------
 
 # Seu código aqui:
+class Aluno:
+  def __init__(self, nome, nota):
+    self.nome = nome
+    self.nota = nota
+
+  def __str__(self):
+    pass
+
+    a1 = Aluno("Isaque",8.0)
