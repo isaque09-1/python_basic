@@ -1,6 +1,6 @@
-from user.db import USERS
-from user.validations import validate_email
-from user.encyption import encyption_password
+from db import USERS
+from validations import validate_email
+from encyption import encyption_password
 
 
 def list_users():

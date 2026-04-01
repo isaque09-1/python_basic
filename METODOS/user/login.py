@@ -1,5 +1,5 @@
-from user.db import USERS
-from user.encyption import decrypt_password
+from db import USERS
+from encyption import decrypt_password
 
 def find_by_username(username):
     for user in USERS:
