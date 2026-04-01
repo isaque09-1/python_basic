@@ -19,18 +19,22 @@ class User :
     def delete(self, id):
         del USERS[self.id-1]
 
-    def get_user_by_id (self):
+    @classmethod
+    def get_user_by_id (cls, id):
         for user in USERS:
-            if user.id == self.id :
+            if user.id ==id:
                 return user
         return None
         
-
-
-
+    @classmethod    #metodo de classe 
+    def get_all_users(cls):
+        return USERS
+    
 user1 = User(1,'pedro','pedrin123','pedrin@gmail.com')
 user1.add()
-print(USERS)
 
-user1.update(1,'adalberto','12345','adalberto@gmail.com')
-print(USERS)
+print(User.get_user_by_id(1))   
+print(User.get_all_users())
+
+
+
