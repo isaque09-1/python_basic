@@ -13,7 +13,7 @@
 #
 # CONCEITOS USADOS: input(), int(), if/else, operador % (módulo)
 # -----------------------------------------------------------------------------
-'''
+
 numero = int(input("Digite um número inteiro: "))
 
 if numero % 2 == 0:
@@ -125,7 +125,7 @@ print("Soma dos pares:", sum(par))
 #  FIM DOS EXERCÍCIOS
 # =============================================================================
 
-
+'''
 #====================================================================================
  Você concluiu todos os 5 exercícios! Aqui vai um resumo da sua jornada:
 
@@ -133,7 +133,7 @@ Exercício 1 — resolveu de primeira, ótimo início
 Exercício 2 — dificuldade com elif e faixas com and, mas chegou lá
 Exercício 3 — pegou bem o conceito de for com append()
 Exercício 4 — o mais difícil, mas aprendeu o in com tuplas
-Exercício 5 — boa evolução com listas e sum()
+Exercício 5 — boa evolução com listas e sum()'''
 #====================================================================================
 
 
@@ -253,7 +253,7 @@ else:
 
 
 #=====================================================================================
-
+'''
 1 — Parênteses abertos sem fechar
 Apareceu nos exercícios 2, 7 e 8. Sempre conte os ( e ) — o número tem que ser igual na mesma linha.
 2 — Indentação
@@ -266,7 +266,7 @@ No exercício 6 você usou for i mas dentro do if usou letra. O nome precisa ser
 Nos exercícios 3 e 8 você colocou o input() antes do for, o que pede o valor só uma vez. Quando quiser pedir um valor a cada repetição, o input() precisa estar dentro do loop.
 6 — Comparar tupla com string
 No exercício 4 você tentou diaS == "segunda" várias vezes. Para verificar se um valor está dentro de uma tupla ou lista, usa-se in, não ==.
-
+'''
 #========================================================================================
 
 
@@ -278,7 +278,7 @@ No exercício 4 você tentou diaS == "segunda" várias vezes. Para verificar se 
 #Quando acertar, exiba quantas tentativas foram necessárias.
 #------------------------------------------------------------------------------------
 
-secreto = 4
+secreto = 12
 contador = 0
 
 while True :
@@ -287,9 +287,9 @@ while True :
  if tentativa == secreto :
   print(f'parabens voce acertou em {contador} vezes')
   break;
- elif tentativa > secreto :
-  print('numero maior')
  elif tentativa < secreto :
+  print('numero maior')
+ elif tentativa > secreto :
   print('numero menor') 
  else :
   print('numero invalido')
@@ -297,7 +297,7 @@ while True :
 
 
 
-# -----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # EXERCÍCIO 12 — Soma dos números de uma lista
 # -----------------------------------------------------------------------------
 # ENUNCIADO:
@@ -395,8 +395,7 @@ if num >0 :
 else :
     print('numero invalido')
 
-
-
+'''
 #=============================================
 Você concluiu os exercícios 11 a 15! Resumo rápido:
 
@@ -405,7 +404,7 @@ Exercício 12 — acumulador com +=, resolveu rápido
 Exercício 13 — conversor com fórmulas, pegou bem a lógica
 Exercício 14 — not in com listas, excelente
 Exercício 15 — contagem regressiva com while e -=
-
+'''
 #==============================================
 
 
@@ -432,7 +431,7 @@ Exercício 15 — contagem regressiva com while e -=
 #   print(p1.nome)   # João
 #   print(p1.idade)  # 25
 # -----------------------------------------------------------------------------
-
+'''
 # Seu código aqui:
 class Pessoa:
  def __init__ (self, nome, idade):
@@ -584,6 +583,7 @@ class Aluno:
     self.nota = nota
 
   def __str__(self):
-    pass
+    return f"o aluno {self.nome} tirou {self.nota} na prova"
 
     a1 = Aluno("Isaque",8.0)
+    print(a1)
