@@ -587,3 +587,236 @@ class Aluno:
 
     a1 = Aluno("Isaque",8.0)
     print(a1)
+
+
+# =============================================================================
+#  POO — PROGRAMAÇÃO ORIENTADA A OBJETOS
+#  Resumo dos conceitos + atividades práticas
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 1. OBJETO
+# -----------------------------------------------------------------------------
+# Um objeto é uma instância de uma classe. É a "coisa real" criada a partir
+# do molde (classe). Ele tem atributos (dados) e métodos (ações).
+
+class Cachorro:
+    def __init__(self, nome):
+        self.nome = nome
+
+dog = Cachorro("Rex")  # dog é um OBJETO da classe Cachorro
+print(dog.nome)        # Rex
+
+
+# -----------------------------------------------------------------------------
+# 2. MÉTODO CONSTRUTOR — __init__
+# -----------------------------------------------------------------------------
+# É executado automaticamente quando um objeto é criado.
+# Define os atributos iniciais do objeto.
+
+class Pessoa:
+    def __init__(self, nome, idade):  # construtor
+        self.nome = nome
+        self.idade = idade
+
+p1 = Pessoa("Carlos", 18)  # __init__ roda aqui automaticamente
+print(p1.nome)             # Carlos
+
+
+# -----------------------------------------------------------------------------
+# 3. MÉTODOS ESPECIAIS
+# -----------------------------------------------------------------------------
+# São métodos com __ no início e no fim. O Python os chama automaticamente
+# em situações específicas.
+#
+#   __init__  → chamado ao criar o objeto
+#   __str__   → chamado ao usar print() no objeto
+#   __len__   → chamado ao usar len() no objeto
+
+class Produto:
+    def __init__(self, nome, preco):
+        self.nome = nome
+        self.preco = preco
+
+    def __str__(self):
+        return f"Produto: {self.nome} — R${self.preco:.2f}"
+
+p = Produto("Notebook", 3500)
+print(p)  # Produto: Notebook — R$3500.00
+
+
+# -----------------------------------------------------------------------------
+# 4. ENCAPSULAMENTO
+# -----------------------------------------------------------------------------
+# Proteger os dados internos de um objeto, controlando o acesso a eles.
+# Atributos privados usam __ (dois underscores) no início.
+# Para acessar, crie métodos get e set.
+
+class ContaBancaria:
+    def __init__(self, saldo):
+        self.__saldo = saldo  # atributo privado — não acessível diretamente
+
+    def get_saldo(self):      # método para LER o saldo
+        return self.__saldo
+
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+
+conta = ContaBancaria(1000)
+# print(conta.__saldo)    # ❌ erro — atributo privado
+print(conta.get_saldo())  # ✅ 1000 — acesso pelo método
+
+
+# -----------------------------------------------------------------------------
+# 5. HERANÇA
+# -----------------------------------------------------------------------------
+# Uma classe pode herdar atributos e métodos de outra classe.
+# A classe filha herda tudo da classe mãe e pode adicionar ou modificar.
+
+class Animal:                      # classe mãe
+    def __init__(self, nome):
+        self.nome = nome
+
+    def falar(self):
+        print("...")
+
+class Gato(Animal):                # classe filha herda de Animal
+    def falar(self):               # sobrescreve o método da mãe
+        print(f"{self.nome} diz: Miau!")
+
+class Cachorro2(Animal):           # outra classe filha
+    def falar(self):
+        print(f"{self.nome} diz: Au au!")
+
+g = Gato("Mimi")
+d = Cachorro2("Rex")
+g.falar()   # Mimi diz: Miau!
+d.falar()   # Rex diz: Au au!
+
+
+# -----------------------------------------------------------------------------
+# 6. POLIMORFISMO
+# -----------------------------------------------------------------------------
+# Objetos de classes diferentes podem ser tratados da mesma forma.
+# O mesmo método se comporta diferente dependendo do objeto.
+# (Geralmente usado junto com herança)
+
+animais = [Gato("Mimi"), Cachorro2("Rex"), Gato("Bolinha")]
+
+for animal in animais:
+    animal.falar()  # cada um fala do seu jeito!
+
+
+# -----------------------------------------------------------------------------
+# 7. ABSTRAÇÃO
+# -----------------------------------------------------------------------------
+# Esconder a complexidade e mostrar apenas o necessário.
+# O usuário da classe não precisa saber como funciona por dentro,
+# só precisa saber o que ela faz.
+
+class Microondas:
+    def __init__(self):
+        self.__temperatura = 0     # detalhe interno escondido
+
+    def __aquecer(self):           # método privado — detalhe interno
+        self.__temperatura = 180
+
+    def ligar(self):               # método público — interface simples
+        self.__aquecer()           # complexidade escondida aqui dentro
+        print("Microondas ligado!")
+
+m = Microondas()
+m.ligar()          # simples para quem usa
+# m.__aquecer()    # ❌ não acessível — detalhe interno
+
+
+# =============================================================================
+#  ATIVIDADES PRÁTICAS
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# ATIVIDADE 1 — Encapsulamento
+# -----------------------------------------------------------------------------
+# Crie uma classe Funcionario com os atributos privados __nome e __salario.
+# Adicione métodos para ler e alterar o salário (get e set).
+# No set, só permita salários maiores que zero.
+# Crie um objeto e teste os métodos.
+
+# Seu código aqui:
+class funcionario :
+   def __init__(self,nome,salario):
+      self.__nome = nome 
+      self.salario = salario
+
+   def get_salario(self):
+      return self.__salario
+   
+   def set_salario (self,valor):
+      if valor > 0 :
+         self.__salario = valor 
+    
+      else :
+         print("salario invalido ")
+      
+
+f1 = funcionario("Carlos", 2000)
+print(f1.get_salario())   # 2000 — lê pelo método
+f1.set_salario(3000)      # altera pelo método
+f1.set_salario(-500)      # bloqueado! salário inválido
+
+
+
+
+# -----------------------------------------------------------------------------
+# ATIVIDADE 2 — Herança
+# -----------------------------------------------------------------------------
+# Crie uma classe Veiculo com os atributos marca e velocidade_maxima
+# e um método descricao() que exibe as informações.
+# Crie duas classes filhas: Carro e Moto, cada uma com um atributo extra.
+# Crie um objeto de cada e chame descricao().
+
+# Seu código aqui:
+
+
+
+
+# -----------------------------------------------------------------------------
+# ATIVIDADE 3 — Polimorfismo
+# -----------------------------------------------------------------------------
+# Crie uma classe Forma com um método area() que retorna 0.
+# Crie duas classes filhas: Retangulo (largura e altura) e Circulo (raio).
+# Cada uma deve sobrescrever area() com o cálculo correto.
+# Fórmulas: retângulo = largura * altura  |  círculo = 3.14 * raio ** 2
+# Crie uma lista com objetos de ambas as classes e exiba a área de cada uma.
+
+# Seu código aqui:
+
+
+
+
+# -----------------------------------------------------------------------------
+# ATIVIDADE 4 — Métodos especiais
+# -----------------------------------------------------------------------------
+# Crie uma classe Livro com os atributos titulo, autor e paginas.
+# Adicione o método __str__ que retorna uma descrição do livro.
+# Adicione o método __len__ que retorna o número de páginas.
+# Teste com print(livro) e len(livro).
+
+# Seu código aqui:
+
+
+
+
+# -----------------------------------------------------------------------------
+# ATIVIDADE 5 — Tudo junto
+# -----------------------------------------------------------------------------
+# Crie uma classe Banco com uma lista privada de contas (__contas).
+# Adicione um método criar_conta(nome, saldo) que cria uma ContaBancaria
+# e adiciona na lista.
+# Adicione um método listar_contas() que exibe todas as contas.
+# Crie 3 contas e liste todas.
+
+# Seu código aqui:
