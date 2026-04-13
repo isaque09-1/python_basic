@@ -1,40 +1,56 @@
 from db import USERS
-class User :
-    def __init__(self,id,username,password,email):
+
+class User:
+    def __init__(self, id, username, password, email):
         self.id = id
         self.username = username
         self.password = password
         self.email = email
 
-    def __repr__ (self):
-        return f'User(id={self.id},username"{self.username}")'
-    
-    def add (self):
+
+    def add(self):
         USERS.append(self)
+       
 
-    def update(self, id , username , password, email):
-        update_user = User(id,username,password,email)
-        USERS [id-1] = update_user
+    def __repr__(self):
+        return f"user_id:{self.id}, \n username:{self.username}, \n user_email :{self.email}, \n user_password :{self.password},\n is_admin : False"
     
-    def delete(self, id):
-        del USERS[self.id-1]
-
-    @classmethod
-    def get_user_by_id (cls, id):
-        for user in USERS:
-            if user.id ==id:
-                return user
-        return None
-        
-    @classmethod    #metodo de classe 
-    def get_all_users(cls):
-        return USERS
+    def update_username(self, username):
+        user = User.get_user_by_id(self.id)
+        if user:
+            user.username = username
+            return user
+        return 'Usuário não encontrado'
     
-user1 = User(1,'pedro','pedrin123','pedrin@gmail.com')
-user1.add()
+    def update_password(self, password):
+        user = User.get_user_by_id(self.id)
+        if user:
+            user.password = password
+            return user
+        return 'Usuário não encontrado'
+    
+    def update_email(self, email):
+        user = User.get_user_by_id(self.id)
+        if user:
+            user.email = email
+            return user
+        return 'Usuário não encontrado'
+    
 
-print(User.get_user_by_id(1))   
-print(User.get_all_users())
+class Carro :
+    def __init__(self,id, marca , modelo, ano , cor)
+        self.id = id
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+        self.cor = cor
 
+    def update_marca(self, nova_marca):
+        self.marca = nova_marca
+        return f'Marca atualizada para :{self.marca}'
 
-
+    def update_modelo(self,novo_modelo):
+        self.modelo = novo_modelo
+        return f'Modelo atualizado para ; {self.modelo}'
+    
+    def update_ano
