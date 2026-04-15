@@ -1,5 +1,5 @@
 from db import USERS
-
+from cars import Car
 class User:
     def __init__(self, id, username, password, email):
         self.id = id
@@ -37,20 +37,6 @@ class User:
         return 'Usuário não encontrado'
     
 
-class Carro :
-    def __init__(self,id, marca , modelo, ano , cor)
-        self.id = id
-        self.marca = marca
-        self.modelo = modelo
-        self.ano = ano
-        self.cor = cor
 
-    def update_marca(self, nova_marca):
-        self.marca = nova_marca
-        return f'Marca atualizada para :{self.marca}'
-
-    def update_modelo(self,novo_modelo):
-        self.modelo = novo_modelo
-        return f'Modelo atualizado para ; {self.modelo}'
-    
-    def update_ano
+    def create_car(id, marca, modelo, ano, cor):
+        return Car(id, marca, modelo , ano , cor)

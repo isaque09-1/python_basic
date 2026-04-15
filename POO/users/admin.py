@@ -1,5 +1,6 @@
 from user import User
 from db import USERS
+from cars import Car, CARS
 class Admin(User):
 
     def __init__(self, id, username, password, email, superuser):
@@ -56,4 +57,30 @@ class Admin(User):
     def delete(cls, id):
         del USERS[id -1]
     
+    
+    def create_car(self, modelo, ano, cor):
+        carro = {"modelo": modelo, "ano": ano, "cor": cor}
+        self.meus_carros.append(carro)
+        print(f"Carro {modelo} adicionado com sucesso!")
 
+    def update_car(self, indice, modelo=None, ano=None, cor=None):
+        if 0 <= indice < len(self.meus_carros):
+            if modelo: self.meus_carros[indice]['modelo'] = modelo
+            if ano: self.meus_carros[indice]['ano'] = ano
+            if cor: self.meus_carros[indice]['cor'] = cor
+            print("Carro atualizado!")
+        else:
+            print("Carro não encontrado.")
+
+    def delete_car(self, id):
+        if 0 <= id < len(self.meus_carros):
+            removido = self.meus_carros.pop(id)
+            print(f"Carro {removido['modelo']} removido.")
+        else:
+            print("id inválido.")
+
+        
+
+  
+
+    
