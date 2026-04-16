@@ -1,4 +1,5 @@
-from db import USERS
+from db import USERS, CARS
+from cars import Car
 
 class User:
     def __init__(self, id, username, password, email):
@@ -7,10 +8,8 @@ class User:
         self.password = password
         self.email = email
 
-
     def add(self):
         USERS.append(self)
-       
 
     def __repr__(self):
         return f"user_id:{self.id}, \n username:{self.username}, \n user_email :{self.email}, \n user_password :{self.password},\n is_admin : False"
@@ -36,21 +35,49 @@ class User:
             return user
         return 'Usuário não encontrado'
     
-
-class Carro :
-    def __init__(self,id, marca , modelo, ano , cor)
-        self.id = id
-        self.marca = marca
-        self.modelo = modelo
-        self.ano = ano
-        self.cor = cor
-
-    def update_marca(self, nova_marca):
-        self.marca = nova_marca
-        return f'Marca atualizada para :{self.marca}'
-
-    def update_modelo(self,novo_modelo):
-        self.modelo = novo_modelo
-        return f'Modelo atualizado para ; {self.modelo}'
+    def create_car(self, id, marca, modelo, ano, cor):
+        new_car = Car(id, marca, modelo, ano, cor)
+        CARS.append(new_car)
+        print(f"Carro criado com sucesso pelo usuário {self.username}!")
+        return new_car
     
-    def update_ano
+    def delete_car(self, car_id):
+        car_to_delete = None
+        for car in CARS:
+            if car.id == car_id:
+                car_to_delete = car
+                break
+        
+        if car_to_delete:
+            CARS.remove(car_to_delete)
+            print(f"Carro com ID {car_id} deletado com sucesso pelo usuário {self.username}!")
+        else:
+            print(f"Carro com ID {car_id} não encontrado!")
+    
+    def update_car(self, car_id, marca=None, modelo=None, ano=None, cor=None):
+        car_to_update = None
+        for car in CARS:
+            if car.id == car_id:
+                car_to_update = car
+                break
+        
+        if car_to_update:
+            if marca:
+                car_to_update.marca = marca
+            if modelo:
+                car_to_update.modelo = modelo
+            if ano:
+                car_to_update.ano = ano
+            if cor:
+                car_to_update.cor = cor
+            print(f"Carro com ID {car_id} atualizado com sucesso pelo usuário {self.username}!")
+            return car_to_update
+        else:
+            print(f"Carro com ID {car_id} não encontrado!")
+    
+    @classmethod
+    def get_user_by_id(cls, id):
+        for user in USERS:
+            if user.id == id:
+                return user
+        return None
