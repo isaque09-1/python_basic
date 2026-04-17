@@ -13,7 +13,6 @@ print("=== Sistema de Carros ===")
 
 print("\nUsuario criando carro:")
 user.create_car(1, "Fiat", "Uno", 2020, "Branco")
-print(f'Detalhes: id = ')
 
 print("\nAdmin criando carro:")
 admin.create_car(2, "BMW", "X1", 2021, "Preto")
