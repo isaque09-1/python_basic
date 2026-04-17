@@ -1,8 +1,8 @@
 from user import User
-from db import USERS
-from cars import Car, CARS
-class Admin(User):
+from db import USERS, CARS
+from cars import Car
 
+class Admin(User):
     def __init__(self, id, username, password, email, superuser):
         super().__init__(id, username, password, email)
         self.superuser = superuser
@@ -57,30 +57,44 @@ class Admin(User):
     def delete(cls, id):
         del USERS[id -1]
     
-    
-    def create_car(self, modelo, ano, cor):
-        carro = {"modelo": modelo, "ano": ano, "cor": cor}
-        self.meus_carros.append(carro)
-        print(f"Carro {modelo} adicionado com sucesso!")
 
-    def update_car(self, indice, modelo=None, ano=None, cor=None):
-        if 0 <= indice < len(self.meus_carros):
-            if modelo: self.meus_carros[indice]['modelo'] = modelo
-            if ano: self.meus_carros[indice]['ano'] = ano
-            if cor: self.meus_carros[indice]['cor'] = cor
-            print("Carro atualizado!")
-        else:
-            print("Carro não encontrado.")
-
-    def delete_car(self, id):
-        if 0 <= id < len(self.meus_carros):
-            removido = self.meus_carros.pop(id)
-            print(f"Carro {removido['modelo']} removido.")
-        else:
-            print("id inválido.")
-
+    def create_car(self, id, marca, modelo, ano, cor):
+        new_car = Car(id, marca, modelo, ano, cor)
+        CARS.append(new_car)
+        print(f"Carro criado com sucesso pelo administrador {self.username}!")
+        print(f"Detalhes : id = {new_car.id}, marca = {new_car.marca}, modelo = {new_car.modelo}, ano = {new_car.ano}, cor = {new_car.cor}")
         
-
-  
-
     
+    def delete_car(self, car_id):
+        car_to_delete = None
+        for car in CARS:
+            if car.id == car_id:
+                car_to_delete = car
+                break
+        
+        if car_to_delete:
+            CARS.remove(car_to_delete)
+            print(f"Carro com ID {car_id} deletado com sucesso pelo administrador {self.username}!")
+        else:
+            print(f"Carro com ID {car_id} não encontrado!")
+    
+    def update_car(self, car_id, marca=None, modelo=None, ano=None, cor=None):
+        car_to_update = None
+        for car in CARS:
+            if car.id == car_id:
+                car_to_update = car
+                break
+        
+        if car_to_update:
+            if marca:
+                car_to_update.marca = marca
+            if modelo:
+                car_to_update.modelo = modelo
+            if ano:
+                car_to_update.ano = ano
+            if cor:
+                car_to_update.cor = cor
+            print(f"Carro com ID {car_id} atualizado com sucesso pelo administrador {self.username}!")
+            return car_to_update
+        else:
+            print(f"Carro com ID {car_id} não encontrado!")

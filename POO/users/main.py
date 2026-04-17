@@ -1,37 +1,34 @@
 from admin import Admin
 from user import User
-from cars import Car
+from db import CARS, USERS
 
-print('criacao  ')
-new_user =Admin.create_user('carlos','carlin123','carlao@gmail.com')
-print(new_user)
-
-new_admin= Admin.create_admin('Roberto','Roberto123','roberto@gmail.com')
-print(new_admin)
-
-
-print('atualizacao ')
+user = Admin.create_user('joao', '123', 'joao@email.com')
+admin = Admin.create_admin('maria', '456', 'maria@email.com')
+print("\nTodos usuarios cadastrados sao :")
+print(f'\n users criados : {user}\n')
+print(f'\n admins criados : {admin}\n')
 
 
-Admin.update(new_user.id, 'kelwin','kelwinzin12','kelwinz@gmail.com')
-Admin.update(new_admin.id,'pedro','pedro12','pedro@gmail.com')
+print("=== Sistema de Carros ===")
 
-print(Admin.get_all_users())
+print("\nUsuario criando carro:")
+user.create_car(1, "Fiat", "Uno", 2020, "Branco")
+print(f'Detalhes: id = ')
 
+print("\nAdmin criando carro:")
+admin.create_car(2, "BMW", "X1", 2021, "Preto")
 
-print('delecao ')
+print("\nCarros cadastrados:")
+for car in CARS:
+    print(car)
 
-Admin.delete(1)
-print(Admin.get_all_users())
+print("\nUsuario atualizando carro:")
+user.update_car(1, cor="Azul")
+user.update_car(1, modelo="Palio")
 
+print("\nAdmin deletando carro:")
+admin.delete_car(2)
 
-print("==================CREATE CAR =============================")
-
-new_car =Admin.admin_create_car(4 , 'ford','fiesta',1990,'branco')
-print(new_car)
-
-
-new_car1= Admin.user_create_car(5 , 'honda', 'city',2005,'preto')
-print(new_car1)
-
-r1= Admin.delete_car()
+print("\nCarros finais:")
+for car in CARS:
+    print(car)
