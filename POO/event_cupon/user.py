@@ -21,7 +21,7 @@ class User:
         )
 
     def criar_evento(self, titulo, descricao, data, local, preco):
-        evento = Event(len(EVENTOS) + 1, titulo, descricao, data, local, preco, self.id)
+        evento = Event(len(EVENTOS) + 1, titulo, descricao, data, local, preco, self.id, self.nome, False)
         EVENTOS.append(evento)
         print(f"Evento '{titulo}' criado por {self.nome}!")
         return evento
