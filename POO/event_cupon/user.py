@@ -65,6 +65,9 @@ class User:
                 if evento.id_usuario != self.id:
                     print("Você só pode deletar seus próprios eventos!")
                     return
+                for cupom in evento.cupons[:]:
+                    if cupom in CUPONS:
+                        CUPONS.remove(cupom)
                 EVENTOS.remove(evento)
                 print(f"Evento '{evento.titulo}' deletado por {self.nome}!")
                 return
@@ -84,8 +87,9 @@ class User:
                 if evento.id_usuario != self.id:
                     print("Você só pode criar cupons para seus próprios eventos!")
                     return
-                cupom = Cupom(len(CUPONS) + 1, titulo, 10, validade, id_evento)
+                cupom = Cupom(len(CUPONS) + 1, titulo, desconto, validade, id_evento)
                 CUPONS.append(cupom)
+                evento.adicionar_cupom(cupom)
                 print(f"Cupom '{titulo}' criado por {self.nome}!")
                 return cupom
         print("Evento não encontrado!")
@@ -93,6 +97,9 @@ class User:
     def deletar_cupom(self, id_cupom):
         for cupom in CUPONS:
             if cupom.id == id_cupom:
+                evento = cupom.evento()
+                if evento and cupom in evento.cupons:
+                    evento.cupons.remove(cupom)
                 CUPONS.remove(cupom)
                 print(f"Cupom '{cupom.titulo}' deletado!")
                 return

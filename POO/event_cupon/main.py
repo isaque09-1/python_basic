@@ -15,7 +15,7 @@ print("\n--- Usuário 2 criando evento ---")
 evento2 = usuario2.criar_evento("Workshop Python", "Aprenda Python", "15/11/2025", "Centro de Convenções", 200.0)
 
 
-print("\n--- Criando cupons sem desconto ---")
+print("\n--- Criando cupons ---")
 
 usuario1.criar_cupom("PROMO_VERAO", 0, "30/12/2025", evento1.id)
 
@@ -45,3 +45,4 @@ for cupons in User.listar_cupons():
 print("--- Usuários cadastrados ---")
 for users in User.listar_usuarios():
     print(users, "\n")
+

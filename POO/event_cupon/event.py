@@ -8,6 +8,13 @@ class Event:
         self.preco = preco
         self.id_usuario = id_usuario
         self.nome_criador = nome_criador
+        self.cupons = []
+
+    def adicionar_cupom(self, cupom):
+        self.cupons.append(cupom)
+
+    def listar_cupons(self):
+        return self.cupons
 
     def __repr__(self):
         return (
@@ -17,7 +24,7 @@ class Event:
             f" data: {self.data}\n"
             f" local: {self.local}\n"
             f" preco: R${self.preco}\n"
-            f" criado por: {self.nome_criador}"
+            f" criado por: {self.nome_criador}\n"
+            f" cupons: {', '.join([c.titulo for c in self.cupons]) if self.cupons else 'Nenhum'}"
         )
 
-        
