@@ -58,6 +58,9 @@ class Admin(User):
         del USERS[id -1]
     
 
+<<<<<<< HEAD
+    
+=======
     def create_car(self, id, marca, modelo, ano, cor):
         new_car = Car(id, marca, modelo, ano, cor)
         CARS.append(new_car)
@@ -97,3 +100,4 @@ class Admin(User):
             return car_to_update
         else:
             print(f"Carro com ID {car_id} não encontrado!")
+>>>>>>> 31bfd6a19a15db35d37669f6078ef76ae7cae860

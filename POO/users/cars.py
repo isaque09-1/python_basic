@@ -1,4 +1,5 @@
 
+
 class Car:
     def __init__(self, id, marca, modelo, ano, cor):
         self.id = id
@@ -15,5 +16,3 @@ class Car:
             f" ano: {self.ano}, \n"
             f" cor: {self.cor}"
         )
-
-   

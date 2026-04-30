@@ -35,12 +35,23 @@ class User:
             return user
         return 'Usuário não encontrado'
     
+<<<<<<< HEAD
+
+    def create_car(self, id, marca, modelo, ano, cor):
+        new_car = Car(id, marca, modelo, ano, cor)
+        CARS.append(new_car)
+        print(f"Carro criado com sucesso pelo administrador {self.username}!")
+        print(f"Detalhes : id = {new_car.id}, marca = {new_car.marca}, modelo = {new_car.modelo}, ano = {new_car.ano}, cor = {new_car.cor}")
+    
+    
+=======
     def create_car(self, id, marca, modelo, ano, cor):
         new_car = Car(id, marca, modelo, ano, cor)
         CARS.append(new_car)
         print(f"Carro criado com sucesso pelo usuário {self.username}!")
         return new_car
     
+>>>>>>> 31bfd6a19a15db35d37669f6078ef76ae7cae860
     def delete_car(self, car_id):
         car_to_delete = None
         for car in CARS:
@@ -50,7 +61,11 @@ class User:
         
         if car_to_delete:
             CARS.remove(car_to_delete)
+<<<<<<< HEAD
+            print(f"Carro com ID {car_id} deletado com sucesso pelo administrador {self.username}!")
+=======
             print(f"Carro com ID {car_id} deletado com sucesso pelo usuário {self.username}!")
+>>>>>>> 31bfd6a19a15db35d37669f6078ef76ae7cae860
         else:
             print(f"Carro com ID {car_id} não encontrado!")
     
@@ -70,6 +85,12 @@ class User:
                 car_to_update.ano = ano
             if cor:
                 car_to_update.cor = cor
+<<<<<<< HEAD
+            print(f"Carro com ID {car_id} atualizado com sucesso pelo administrador {self.username}!")
+            return car_to_update
+        else:
+            print(f"Carro com ID {car_id} não encontrado!")
+=======
             print(f"Carro com ID {car_id} atualizado com sucesso pelo usuário {self.username}!")
             return car_to_update
         else:
@@ -81,3 +102,4 @@ class User:
             if user.id == id:
                 return user
         return None
+>>>>>>> 31bfd6a19a15db35d37669f6078ef76ae7cae860
