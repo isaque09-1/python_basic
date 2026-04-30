@@ -1,6 +1,4 @@
 
-
-
 class Car:
     def __init__(self, id, marca, modelo, ano, cor):
         self.id = id
