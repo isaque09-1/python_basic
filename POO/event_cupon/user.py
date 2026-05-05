@@ -1,6 +1,6 @@
 from db import USUARIOS, EVENTOS, CUPONS
 from event import Event
-from cupon import Cupom
+from POO.event_cupon.cupom import Cupom
 
 class User:
     def __init__(self, id, nome, senha, email):
@@ -105,6 +105,22 @@ class User:
                 return
         print("Cupom não encontrado!")
 
+    def aplicar_cupom(self, id_cupom):
+        for cupom in CUPONS:
+            if cupom.id == id_cupom:
+                desconto = cupom.calcular_desconto()
+                if desconto is not None:
+                    print(f"\n--- Aplicando cupom '{cupom.titulo}' ---")
+                    print(f"Preço original: R${cupom.evento().preco:.2f}")
+                    print(f"Desconto: {cupom.desconto}%")
+                    print(f"Preço com desconto: R${desconto:.2f}")
+                    return desconto
+                else:
+                    print("Cupom inválido ou evento não encontrado!")
+                    return None
+        print("Cupom não encontrado!")
+        return None
+
     @classmethod
     def listar_eventos(cls):
         return EVENTOS
@@ -112,4 +128,6 @@ class User:
     @classmethod
     def listar_cupons(cls):
         return CUPONS
+
+
 

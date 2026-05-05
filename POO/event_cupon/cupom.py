@@ -14,6 +14,12 @@ class Cupom:
                 return evento
         return None
 
+    def calcular_desconto(self):
+        evento = self.evento()
+        if evento:
+            return evento.preco * (1 - self.desconto / 100)
+        return None
+
     def __repr__(self):
         evento = self.evento()
         evento_titulo = evento.titulo if evento else "Evento não encontrado"
@@ -24,4 +30,6 @@ class Cupom:
             f" validade: {self.validade}\n"
             f" evento: {evento_titulo}"
         )
+    
 
+    
