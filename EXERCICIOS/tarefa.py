@@ -67,3 +67,17 @@ else:
 
 
 
+
+
+class Conta :
+    def __init__ (self ,saldo):
+        self.saldo = saldo 
+        
+
+    @classmethod
+    def sacar (cls , valor):
+        if valor <= cls.saldo:
+            cls.saldo -= valor
+
+c = Conta(100)
+c.sacar(30)

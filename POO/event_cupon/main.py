@@ -42,6 +42,24 @@ print("\n--- Cupons restantes ---")
 for cupons in User.listar_cupons():
     print(cupons, "\n")
 
+
+print("\n--- Testando aplicação de cupons ---")
+print("\nUsuário 1 aplicando seu cupom (PROMO_VERAO, 0%):")
+usuario1.aplicar_cupom(2)
+
+print("\nUsuário 2 aplicando seu cupom (DESCONTO_VIP, 10%):")
+usuario2.aplicar_cupom(2)
+
+print("\n--- Eventos com preços e cupons ---")
+for evento in User.listar_eventos():
+    print(evento)
+    if evento.cupons:
+        for cupom in evento.cupons:
+            desc = cupom.calcular_desconto()
+            if desc:
+                print(f"  Com {cupom.titulo}: R${desc:.2f}")
+    print()
+
 print("--- Usuários cadastrados ---")
 for users in User.listar_usuarios():
     print(users, "\n")
