@@ -1,26 +1,34 @@
-from user import Users
-from typing import List
+from typing import List, Dict, Any
 
-class Event :
-    def __init__(self,title: str, description:str, users:List[str]):
+from user import Users
+
+
+class Event:
+    def __init__(self, title: str, description: str, users: List[Users], regra: Dict[str, Any]):
         self.title = title
         self.description = description
-        self.user = users
-
+        self.users = users
+        self.regra = regra
 
     def __repr__(self):
-        return f"title :{self.title} | description :{self.description} | user :{self.user}"
+        return (
+            f"title :{self.title} | description :{self.description} | user :{self.users}"
+        )
+
+    @classmethod
+    def create_event(cls, data: dict):
+        return cls(
+            title=data["title"],
+            description=data["description"],
+            users=[],
+            regra=data["regra"],
+        )
     
+    def add_user(self, user: Users):
+        self.users.append(user)
 
+    def add_users(self, users: List[Users]):
+        for user in users :
+            self.users.append(users)
 
-
-u1 = Users("pedrinho", "pedrinmiugrau123","pedro@gmail")
-u2 = Users("kelvao","matador123", "kelvao@...")
-u3 = Users("migro", "cataro", "MIGRAO@...")
-
-
-e1 = Event("rinha de galo", "apostas",u1.username)
-
-print(e1)
-
-
+        
