@@ -1,5 +1,5 @@
 from datetime import datetime
-from user import Users
+from POO.composicao.user import Users
 from typing import Optional
 
 

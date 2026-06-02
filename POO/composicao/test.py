@@ -1,7 +1,7 @@
 from datetime import datetime
-from coupon import Coupon
-from event import Event
-from user import Users
+from POO.composicao.coupon import Coupon
+from POO.composicao.event import Event
+from POO.composicao.user import Users
 
 
 

@@ -5,4 +5,4 @@ class Users:
         self.email = email
 
     def __repr__(self):
-        return f"Username : {self.username} | Password :{self.password} | email :{self.email}"
+        return f"Username : {self.username}| email :{self.email}"

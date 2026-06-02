@@ -1,18 +1,11 @@
 from typing import Any, Dict, List
-from coupon import Coupon
-from palestrantes import Palestrante
-from user import Users
+from POO.composicao.coupon import Coupon
+from POO.composicao.palestrantes import Palestrante
+from POO.composicao.user import Users
 
 
 class Event:
-    def __init__(
-        self,
-        title: str,
-        description: str,
-        users: List[Users],
-        regra: Dict[str, Any],
-        price: float = 0.0,
-    ):
+    def __init__(self,title: str,description: str,users: List[Users],regra: Dict[str, Any],price: float = 0.0,):
         self.title = title
         self.description = description
         self.users = users

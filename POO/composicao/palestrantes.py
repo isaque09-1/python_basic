@@ -6,22 +6,24 @@ class Palestrante:
         self.specialty = specialty
         self.cost = cost
 
+    def __repr__(self):
+        return f'O nome do palestrante é :{self.name}\n idade:{self.age}\n curriculo:{self.curriculum}\n especialidade:{self.specialty}\n custo:{self.cost}'
+
+
+
+
     @classmethod
-    def create_palestrante(
-        cls,
-        name: str,
-        age: int,
-        curriculum: str,
-        specialty: str,
-        cost: float,
-    ):
-        return cls(
-            name=name,
-            age=age,
-            curriculum=curriculum,
-            specialty=specialty,
-            cost=cost,
+    def create_palestrante(cls,data,name: str,age: int,curriculum: str,specialty: str,cost: float,):
+        return Palestrante(
+            name=data['name'],
+            age=data['age'],
+            curriculum=data['curriculum'],
+            specialty=data['specialty'],
+            cost=data['cost'],
         )
+
+
+
 
 
 
