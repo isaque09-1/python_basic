@@ -1,6 +1,6 @@
 from db import USUARIOS, EVENTOS, CUPONS
 from event import Event
-from POO.event_cupon.cupom import Cupom
+from cupom import Cupom
 
 class User:
     def __init__(self, id, nome, senha, email):
