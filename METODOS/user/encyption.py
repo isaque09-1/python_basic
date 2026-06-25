@@ -1,16 +1,19 @@
-def encyption_password (password):
-    encyption_password = ""
+async def encrypt_password(password):
+    encrypted_password = ""
+
     for character in password:
-          new_character = chr(ord(character)+3)
-          encyption_password += new_character
-    return encyption_password
+        new_character = chr(ord(character) + 3)
+        encrypted_password += new_character
 
-def decrypt_password (password):
-    decrypt_password = ""
-    
+
+    return encrypted_password
+
+async def decrypt_password(password): 
+    decrypted_password = ""
+
     for character in password:
-        new_character = chr(ord(character)-3)
-        decrypt_password += new_character
-    return decrypt_password
+        new_character = chr(ord(character) - 3)
+        decrypted_password += new_character
 
 
+    return decrypted_password
